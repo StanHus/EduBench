@@ -34,18 +34,21 @@
 ## 评估结果
 <div align="center">
   <img src="images/eval_domain.png" alt="eval_domain" width="800"/>
+  <br>
+  <strong>表1：展示了不同评估模型评估的场景级平均得分。</strong>
 </div>
-不同评估模型评估的场景级平均得分。
 
 <div align="center">
   <img src="images/eval_matric.png" alt="eval_matric" width="800"/>
+  <br>
+  <strong>表2：展示了不同评价模型在不同指标下评价的指标级平均得分。</strong>
 </div>
-不同评价模型在不同指标下评价的指标级平均得分。
+
 模型评估结果
-DeepSeek R1 在不同指标中展现出最佳的整体表现，而 Qwen2.5-7B-Instruct 在表~\ref{tab:metric-results-v3-human} 中表现最差。此外，DeepSeek R1 在“高阶思维与技能发展”方面表现最优，而 Qwen2.5-7B-Instruct 在“错误识别与纠正精度”方面表现最不理想，这两款模型与其他模型之间存在明显差距。在具体场景中，DeepSeek R1 仍然是表现最好的模型，而在“情感支持”和“个性化内容生成”等场景中，Qwen2.5-7B-Instruct 的表现优于 Qwen2.5-14B-Instruct。
+DeepSeek R1 在不同指标中展现出最佳的整体表现，而 Qwen2.5-7B-Instruct 在表2 中表现最差。此外，DeepSeek R1 在“高阶思维与技能发展”（Higher-Order Thinking & Skill Development）方面表现最优，而 Qwen2.5-7B-Instruct 在“错误识别与纠正精度”（Error Identification & Correction Precision）方面表现最不理想，这两款模型与其他模型之间存在明显差距。在具体场景中，DeepSeek R1 仍然是表现最好的模型，而在如“情感支持”（Emotional Support）和“个性化内容生成”（Personalized Content Creation）等场景中，Qwen2.5-7B-Instruct 的表现优于 Qwen2.5-14B-Instruct，如表中所示。
 
 人工评估结果
-DeepSeek R1 和 Qwen2.5-7B-Instruct 依然分别展现出最佳和最差的表现，这一结果与基于模型的评估结果一致。与模型评估不同的是，在“推理过程严谨性”（Reasoning Process Rigor）这一指标上，人工标注者对所有五款模型的表现满意度明显下降。其中，Qwen2.5-7B-Instruct 在该指标上的表现尤其糟糕，得分仅为 5.90。相比之下，DeepSeek R1 在“激励、引导与积极反馈”（Motivation, Guidance & Positive Feedback）这一指标上始终表现出色，即使其他模型在此项上表现不佳。在具体场景层面，DeepSeek R1 仍然遥遥领先；而通义千问系列中 7B 与 14B 版本之间的性能差距相对较小，使得 7B 模型在资源受限的场景下成为一个更具性价比的选择。
+在表2中，DeepSeek R1 和 Qwen2.5-7B-Instruct 依然分别展现出最佳和最差的表现，这一结果与基于模型的评估结果一致。与模型评估不同的是，在“推理过程严谨性”（Reasoning Process Rigor）这一指标上，人工标注者对所有五款模型的表现满意度明显下降。其中，Qwen2.5-7B-Instruct 在该指标上的表现尤其糟糕，得分仅为 5.90。相比之下，DeepSeek R1 在“激励、引导与积极反馈”（Motivation, Guidance & Positive Feedback）这一指标上始终表现出色，即使其他模型在此项上表现不佳。在具体场景层面，从表1可以看出，DeepSeek R1 仍然遥遥领先；而通义千问系列中 7B 与 14B 版本之间的性能差距相对较小，使得 7B 模型在资源受限的场景下成为一个更具性价比的选择。
 ## 模型蒸馏
 <div align="center">
   <img src="images/distill_result.png" alt="distill_result" width="800"/>
