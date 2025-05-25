@@ -19,4 +19,4 @@
 - 通过知识蒸馏，使小模型(Qwen2.5-7B-Instruct)在仅有少量数据训练的情况下，达到与最先进大型模型(DeepSeek V3、Qwen Max)相当的性能。
 
 # 场景与评估维度
-
+<img src="images/distribution-radar.pdf" alt="Distribution Radar" width="800"/>
