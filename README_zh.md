@@ -7,6 +7,18 @@
   ⚖️ <a href="" target="_blank">MIT License</a>
 </p>
 
+# 目录
+- [概述](#概述)
+- [框架](#框架)
+- [数据集构建](#数据集构建)
+  - [评估指标设计](#评估指标设计)
+  - [数据集生成](#数据集生成)
+  - [数据评估](#数据集生成)
+- [实验与分析](#实验与分析)
+  - [评估结果](#评估结果)
+  - [模型与人类评估一致性分析](#模型与人类评估一致性分析)
+  - [模型蒸馏](#模型蒸馏)
+ 
 
 # 概述
 <div align="center">
@@ -16,6 +28,7 @@
 </div>
 
 <br>
+
 首次推出 EduBench 📚，一个专为教育场景量身定制的 多样化基准数据集 🌟，涵盖 9大教育场景 🏫 和超过 4000个不同教育情景 🔍，为教育领域的模型评估提供全新视角。
 
 我们设计了 多维度评估指标 🛠️，全面覆盖 教师端和学生端 的 12个关键维度 🧠，确保对场景适应性、事实与推理准确性等方面进行深入评估。
@@ -26,15 +39,10 @@
 ---
 
 
-# 目录
-- [教育场景与评估维度](#教育场景与评估维度)
-- [实验与分析](#实验与分析)
-  - [评估结果](#评估结果)
-  - [模型蒸馏](#模型蒸馏)
-  - [模型与人类评估一致性分析](#模型与人类评估一致性分析)
+
 
 ---
-# 简介
+# 框架
 <div align="center">
   <img src="images/framework.jpg" alt="Framework" width="1200"/>
   <br>
@@ -46,7 +54,7 @@
 
 我们首先根据服务对象的不同，将教育场景分为以下两类：
 
-### 一、以学生为中心的场景（Student-Oriented Scenarios）
+**一、以学生为中心的场景（Student-Oriented Scenarios）**
 
 - 问题解答（Q&A）
 - 错误纠正（EC）
@@ -54,18 +62,18 @@
 - 个性化学习支持（PLS）
 - 情感支持（ES）
 
-### 二、以教师为中心的场景（Teacher-Oriented Scenarios）
+**二、以教师为中心的场景（Teacher-Oriented Scenarios）**
 
 - 问题生成（QG）
 - 自动评分（AG）
 - 教学资料生成（TMG）
 - 个性化内容创作（PCC）
 
-### 评估指标设计
+## 评估指标设计
 
 根据定义的教育场景，我们设计了全面的评估指标体系，每个场景下包含 4 个子指标，共计 12 个核心评估指标。
 
-#### 1. 场景适配性（Scenario Adaptation）
+### 1. 场景适配性（Scenario Adaptation）
 
 用于评估模型回答是否在语境上恰当，并符合教育场景的预期要求。
 
@@ -74,7 +82,7 @@
 - **内容相关性与范围控制**（Content Relevance & Scope Control）
 - **场景元素整合能力**（Scenario Element Integration）
 
-#### 2. 事实性与推理准确性（Factual & Reasoning Accuracy）
+### 2. 事实性与推理准确性（Factual & Reasoning Accuracy）
 
 用于评估模型回答中信息的正确性以及推理过程的严谨性。
 
@@ -83,7 +91,7 @@
 - **推理过程严谨性**（Reasoning Process Rigor）
 - **错误识别与纠正精度**（Error Identification & Correction Precision）
 
-#### 3. 教学应用性（Pedagogical Application）
+### 3. 教学应用性（Pedagogical Application）
 
 用于评估模型回答是否体现良好的教学原则，并能有效支持学生学习。
 
@@ -94,20 +102,20 @@
 
 ---
 
-### 数据集生成
+## 数据集生成
 
-我们以错误纠正（EC）为例，介绍数据生成方式
+我们以错误纠正（EC）为例，运行以下代码进行数据生成
 ```
 python ./code/generation/EC.py
 ```
 
-### 数据评估
+## 数据评估
 评估数据集时只需运行下面代码(需要进行api配置的调整)
 ```
 python ./code/evaluation/evaluation.py
 ```
 
-## 实验与分析
+# 实验与分析
 
 ### 评估结果
 <div align="center">
@@ -146,7 +154,7 @@ python ./code/evaluation/evaluation.py
   <strong>表1：由不同评估模型评估的场景级平均得分。</strong>
 </div>
 
-
+<br>
 <div align="center">
 
 | Evaluator       | Model                  | BFA  | CSI  | CRSC | DKA  | EICP | HOTS | IFTC | MGP  | PAS  | RPR  | RTC  | SEI  | Average |
