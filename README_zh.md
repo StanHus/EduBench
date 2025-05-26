@@ -36,8 +36,6 @@
 不仅如此，借助 知识蒸馏技术 🔬，我们让小模型如 Qwen2.5-7B-Instruct 在仅有少量数据的情况下，依然能够实现与最先进的大型模型 DeepSeek V3 和 Qwen Max 相媲美的性能。EduBench 不仅是一个基准，更是教育模型发展的 游戏改变者 🚀！
 
 
----
-
 
 
 
@@ -49,7 +47,7 @@
   <strong>左侧部分展示了我们的数据整理流程；中间部分展示了我们的三个主要评估原则，以及我们对大语言模型与人类评判一致性问题的探究；右侧部分展示了我们的数据如何提升小型模型的性能。</strong>
 </div>
 
-
+---
 # 数据集构建
 
 我们首先根据服务对象的不同，将教育场景分为以下两类：
@@ -100,7 +98,7 @@
 - **个性化、适应性与学习支持**（Personalization, Adaptation & Learning Support）
 - **高阶思维与技能发展**（Higher-Order Thinking & Skill Development）
 
----
+
 
 ## 数据集生成
 
@@ -114,7 +112,7 @@ python ./code/generation/EC.py
 ```
 python ./code/evaluation/evaluation.py
 ```
-
+---
 # 实验与分析
 
 ### 评估结果
