@@ -9,18 +9,19 @@
 
 
 # 概述
+<div align="center">
+  <img src="images/distribution-radar.jpg" alt="Distribution Radar" width="1200"/>
+  <br>
+  <strong>左侧部分展示了我们的9个教育场景，沿纵向展示了它们的多维教育背景和相应的指标。右侧部分展示了EduBench上的人工评估结果。</strong>
+</div>
 
+<br>
 首次推出 EduBench 📚，一个专为教育场景量身定制的 多样化基准数据集 🌟，涵盖 9大教育场景 🏫 和超过 4000个不同教育情景 🔍，为教育领域的模型评估提供全新视角。
 
 我们设计了 多维度评估指标 🛠️，全面覆盖 教师端和学生端 的 12个关键维度 🧠，确保对场景适应性、事实与推理准确性等方面进行深入评估。
 
 不仅如此，借助 知识蒸馏技术 🔬，我们让小模型如 Qwen2.5-7B-Instruct 在仅有少量数据的情况下，依然能够实现与最先进的大型模型 DeepSeek V3 和 Qwen Max 相媲美的性能。EduBench 不仅是一个基准，更是教育模型发展的 游戏改变者 🚀！
 
-<div align="center">
-  <img src="images/framework.jpg" alt="Framework" width="1200"/>
-  <br>
-  <strong>左侧部分展示了我们的数据整理流程；中间部分展示了我们的三个主要评估原则，以及我们对大语言模型与人类评判一致性问题的探究；右侧部分展示了我们的数据如何提升小型模型的性能。</strong>
-</div>
 
 ---
 
@@ -33,21 +34,19 @@
   - [模型与人类评估一致性分析](#模型与人类评估一致性分析)
 
 ---
-## 教育场景与评估维度
-
+# 简介
 <div align="center">
-  <img src="images/distribution-radar.jpg" alt="Distribution Radar" width="1200"/>
+  <img src="images/framework.jpg" alt="Framework" width="1200"/>
   <br>
-  <strong>左侧部分展示了我们的9个教育场景，沿纵向展示了它们的多维教育背景和相应的指标。右侧部分展示了EduBench上的人工评估结果。</strong>
+  <strong>左侧部分展示了我们的数据整理流程；中间部分展示了我们的三个主要评估原则，以及我们对大语言模型与人类评判一致性问题的探究；右侧部分展示了我们的数据如何提升小型模型的性能。</strong>
 </div>
 
-<br>
 
-### 教育场景分类
+# 数据集构建
 
 我们首先根据服务对象的不同，将教育场景分为以下两类：
 
-#### 一、以学生为中心的场景（Student-Oriented Scenarios）
+### 一、以学生为中心的场景（Student-Oriented Scenarios）
 
 - 问题解答（Q&A）
 - 错误纠正（EC）
@@ -55,7 +54,7 @@
 - 个性化学习支持（PLS）
 - 情感支持（ES）
 
-#### 二、以教师为中心的场景（Teacher-Oriented Scenarios）
+### 二、以教师为中心的场景（Teacher-Oriented Scenarios）
 
 - 问题生成（QG）
 - 自动评分（AG）
@@ -94,6 +93,19 @@
 - **高阶思维与技能发展**（Higher-Order Thinking & Skill Development）
 
 ---
+
+### 数据集生成
+
+我们以错误纠正（EC）为例，介绍数据生成方式
+```
+python ./code/generation/EC.py
+```
+
+### 数据评估
+评估数据集时只需运行下面代码(需要进行api配置的调整)
+```
+python ./code/evaluation/evaluation.py
+```
 
 ## 实验与分析
 
