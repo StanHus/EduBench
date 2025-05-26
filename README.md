@@ -7,17 +7,9 @@
   ⚖️ <a href="" target="_blank">MIT License</a>
 </p>
 
-# Table of Contents
-- [Overview](#overview)
-- [Educational Scenarios and Evaluation Dimensions](#educational-scenarios-and-evaluation-dimensions)
-- [Experiments and Analysis](#experiments-and-analysis)
-  - [Evaluation Results](#evaluation-results)
-  - [Model Distillation](#model-distillation)
-  - [Consistency Analysis Between Model and Human Evaluation](#consistency-analysis-between-model-and-human-evaluation)
 
----
 
-## Overview
+# Overview
 
 Introducing EduBench 📚 – the first-ever comprehensive benchmark dataset 🌟 designed specifically for the diverse world of educational scenarios! With 9 major educational scenarios 🏫 and over 4,000 unique educational situations 🔍, EduBench is set to revolutionize how we evaluate and optimize educational models.
 
@@ -30,6 +22,14 @@ But that’s not all! 💡 Through cutting-edge knowledge distillation technique
   <br>
   <strong>The left part illustrates our data curation procedure; the middle part showcases our three main evaluation principles and our investigation into the alignment of LLMs with human judgment; the right part shows how our data can boost the performance of smaller models.</strong>
 </div>
+
+---
+# Table of Contents
+- [Educational Scenarios and Evaluation Dimensions](#educational-scenarios-and-evaluation-dimensions)
+- [Experiments and Analysis](#experiments-and-analysis)
+  - [Evaluation Results](#evaluation-results)
+  - [Model Distillation](#model-distillation)
+  - [Consistency Analysis Between Model and Human Evaluation](#consistency-analysis-between-model-and-human-evaluation)
 
 ---
 
