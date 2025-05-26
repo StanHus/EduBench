@@ -2,35 +2,47 @@
 
 <p align="center">
   📄 <a href="https://arxiv.org/pdf/2505.16160 " target="_blank">Paper</a> &nbsp; | &nbsp;
-  🤗 <a href="https://huggingface.co/DirectionAI/EDU-Qwen2.5-7B " target="_blank">Model</a> &nbsp; |
-  🎰 <a href="https://huggingface.co/datasets/DirectionAI/EduBench " target="_blank">Datasets</a> &nbsp; | &nbsp;
+  🤗 <a href="https://huggingface.co/DirectionAI/EDU-Qwen2.5-7B" target="_blank">Model</a> &nbsp; |
+  🎰 <a href="https://huggingface.co/datasets/DirectionAI/EduBench" target="_blank">Datasets</a> &nbsp; | &nbsp;
   ⚖️ <a href="" target="_blank">MIT License</a>
 </p>
 
+# Table of Contents
+- [Overview](#overview)
+- [Framework](#framework)
+- [Dataset Construction](#dataset-construction)
+  - [Evaluation Metrics Design](#evaluation-metrics-design)
+  - [Dataset Generation](#dataset-generation)
+  - [Data Evaluation](#data-evaluation)
+- [Experiments and Analysis](#experiments-and-analysis)
+  - [Evaluation Results](#evaluation-results)
+  - [Model-Human Evaluation Consistency Analysis](#model-human-evaluation-consistency-analysis)
+  - [Model Distillation](#model-distillation)
+ 
+
 # Overview
+<div align="center">
+  <img src="images/distribution-radar.jpg" alt="Distribution Radar" width="1200"/>
+  <br>
+  <strong>The left section displays our 9 educational scenarios, showing their multidimensional educational contexts and corresponding metrics along the vertical axis. The right section presents human evaluation results on EduBench.</strong>
+</div>
 
-Introducing **EduBench** 📚, a **diverse benchmark dataset** specifically tailored for educational scenarios, covering **9 major educational settings** 🏫 and over **4,000 diverse educational contexts** 🔍, offering a new perspective on model evaluation in the education domain.
+<br>
 
-We designed a **multi-dimensional evaluation framework** 🛠️ that comprehensively covers **12 key dimensions** across both **teacher-centric and student-centric** use cases, ensuring in-depth assessment of scenario adaptability, factual and reasoning accuracy, and more.
+Introducing EduBench 📚, a diversified benchmark dataset 🌟 specifically tailored for educational scenarios, covering 9 major educational contexts 🏫 and over 4,000 different educational situations 🔍, providing a fresh perspective for model evaluation in the education domain.
 
-Moreover, leveraging **knowledge distillation techniques** 🔬, we enabled smaller models like **Qwen2.5-7B-Instruct** to achieve performance comparable to state-of-the-art large models such as **DeepSeek V3** and **Qwen Max**, even with limited data. **EduBench** is not just a benchmark—it's a **game-changer** 🚀 for the development of educational models!
+We designed multidimensional evaluation metrics 🛠️, comprehensively covering 12 key dimensions 🧠 from both teacher and student perspectives, ensuring in-depth assessment of scenario adaptability, factual and reasoning accuracy, and more.
 
+Moreover, through knowledge distillation technology 🔬, we enabled smaller models like Qwen2.5-7B-Instruct to achieve performance comparable to state-of-the-art large models such as DeepSeek V3 and Qwen Max with only minimal data. EduBench is not just a benchmark—it's a game changer 🚀 for educational model development!
+
+---
+
+# Framework
 <div align="center">
   <img src="images/framework.jpg" alt="Framework" width="1200"/>
   <br>
-  <strong>The left side shows our data curation pipeline; the center highlights our three core evaluation principles and explores the alignment between large language models and human judgments; the right side demonstrates how our data enhances the performance of smaller models.</strong>
+  <strong>The left part illustrates our data curation process; the middle part presents our three main evaluation principles and our exploration of the consistency between large language models and human judgments; the right part demonstrates how our data enhances the performance of small models.</strong>
 </div>
-
----
-
-# Table of Contents
-- [Educational Scenarios and Evaluation Dimensions](#educational-scenarios-and-evaluation-dimensions)
-- [Experiments and Analysis](#experiments-and-analysis)
-  - [Evaluation Results](#evaluation-results)
-  - [Model Distillation](#model-distillation)
-  - [Consistency Analysis Between Model and Human Evaluation](#consistency-analysis-between-model-and-human-evaluation)
-
----
 
 ## Educational Scenarios and Evaluation Dimensions
 
@@ -42,11 +54,11 @@ Moreover, leveraging **knowledge distillation techniques** 🔬, we enabled smal
 
 <br>
 
-### Classification of Educational Scenarios
+# Dataset Construction
 
-We classify educational scenarios into two categories based on their primary users:
+We first classify educational scenarios into two categories based on the target users:
 
-#### I. Student-Oriented Scenarios
+**I. Student-Oriented Scenarios**
 
 - Question Answering (Q&A)
 - Error Correction (EC)
@@ -54,45 +66,50 @@ We classify educational scenarios into two categories based on their primary use
 - Personalized Learning Support (PLS)
 - Emotional Support (ES)
 
-#### II. Teacher-Oriented Scenarios
+**II. Teacher-Oriented Scenarios**
 
 - Question Generation (QG)
-- Automated Grading (AG)
+- Automatic Grading (AG)
 - Teaching Material Generation (TMG)
 - Personalized Content Creation (PCC)
 
-### Design of Evaluation Metrics
+## Evaluation Metric Design
 
-Based on the defined educational scenarios, we designed a comprehensive evaluation metric system with 4 sub-metrics per scenario, totaling 12 core evaluation metrics.
+Based on the defined educational scenarios, we have designed a comprehensive evaluation metric system. Each scenario includes 4 sub-metrics, resulting in a total of 12 core evaluation metrics.
 
-#### 1. Scenario Adaptation
+### 1. Scenario Adaptation
 
-Measures whether the model’s response is contextually appropriate and meets the expected requirements of the educational scenario.
+This category evaluates whether the model's response is contextually appropriate and meets the expected requirements of the educational scenario.
 
 - **Instruction Following & Task Completion**
 - **Role & Tone Consistency**
 - **Content Relevance & Scope Control**
 - **Scenario Element Integration**
 
-#### 2. Factual & Reasoning Accuracy
+### 2. Factual & Reasoning Accuracy
 
-Assesses the correctness of information and the rigor of the reasoning process in the model's responses.
+This category assesses the correctness of information and the rigor of reasoning within the model’s response.
 
 - **Basic Factual Accuracy**
 - **Domain Knowledge Accuracy**
 - **Reasoning Process Rigor**
 - **Error Identification & Correction Precision**
 
-#### 3. Pedagogical Application
+### 3. Pedagogical Application
 
-Evaluates whether the model’s response reflects sound pedagogical principles and effectively supports student learning.
+This category evaluates whether the model’s response reflects sound pedagogical principles and effectively supports student learning.
 
 - **Clarity, Simplicity & Inspiration**
 - **Motivation, Guidance & Positive Feedback**
 - **Personalization, Adaptation & Learning Support**
 - **Higher-Order Thinking & Skill Development**
 
----
+## Dataset Generation
+
+As an example, we use Error Correction (EC) to demonstrate how data is generated by running the following code:
+```python
+python ./code/generation/EC.py
+```
 
 ## Experiments and Analysis
 
