@@ -19,9 +19,11 @@
 
 ## Overview
 
-- We introduce **EduBench**, the first comprehensive benchmark dataset tailored to diverse educational scenarios, containing **9 major educational scenarios** and **over 4,000 distinct educational situations**.
-- We design a **multi-dimensional evaluation framework**, covering **12 key dimensions** across both student- and teacher-oriented settings, including scenario adaptation, factual and reasoning accuracy, etc.
-- Through **knowledge distillation techniques**, we enable small models (e.g., Qwen2.5-7B-Instruct) to achieve performance comparable to state-of-the-art large models (e.g., DeepSeek V3, Qwen Max), even when trained on limited data.
+Introducing EduBench 📚 – the first-ever comprehensive benchmark dataset 🌟 designed specifically for the diverse world of educational scenarios! With 9 major educational scenarios 🏫 and over 4,000 unique educational situations 🔍, EduBench is set to revolutionize how we evaluate and optimize educational models.
+
+Our innovative multi-dimensional evaluation framework 🛠️ stands out by covering 12 critical dimensions 🧠 across both student- and teacher-oriented settings, ensuring thorough assessments of scenario adaptation, factual accuracy, reasoning precision, and more.
+
+But that’s not all! 💡 Through cutting-edge knowledge distillation techniques 🔬, we’ve empowered smaller models like Qwen2.5-7B-Instruct to deliver performance on par with state-of-the-art giants such as DeepSeek V3 and Qwen Max, even when trained with limited data. EduBench isn’t just a benchmark; it’s a game-changer in educational model development 🚀.
 
 <div align="center">
   <img src="images/framework.jpg" alt="Framework" width="1200"/>
