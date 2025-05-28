@@ -188,33 +188,59 @@ python ./code/evaluation/evaluation.py
 </div>
 
 **Model Evaluation Results**  
-DeepSeek R1 demonstrated the best overall performance across different metrics, while Qwen2.5-7B-Instruct performed worst in Table 2. Additionally, DeepSeek R1 excelled in "Higher-Order Thinking & Skill Development," whereas Qwen2.5-7B-Instruct performed poorly in "Error Identification & Correction Precision," with significant gaps compared to other models. In specific scenarios, DeepSeek R1 remained the top performer, and in areas like "Emotional Support" and "Personalized Content Creation," Qwen2.5-7B-Instruct outperformed Qwen2.5-14B-Instruct.
+DeepSeek R1 demonstrates the best overall performance across different metrics, while Qwen2.5-7B-Instruct performs the worst in Table 2.
 
 **Human Evaluation Results**  
-In Table 2, DeepSeek R1 and Qwen2.5-7B-Instruct still showed the best and worst performances respectively, consistent with model-based evaluations. Unlike model evaluations, human annotators expressed significantly lower satisfaction with all five models in terms of "Reasoning Process Rigor." Specifically, Qwen2.5-7B-Instruct scored only 5.90 on this metric. By contrast, DeepSeek R1 consistently performed well in "Motivation, Guidance & Positive Feedback," even when other models struggled in this area. At the scenario level, Table 1 shows that DeepSeek R1 remains far ahead; among the Qwen series, the performance gap between the 7B and 14B versions is relatively small, making the 7B model a more cost-effective choice in resource-constrained environments.
-
----
-
-### Model Distillation
-
-<div align="center">
-  <img src="images/distill_result.png" alt="distill_result" width="800"/>
-</div>
-
-The figure above compares the distilled model's performance against other models across various metrics:
-
-- **Dataset Construction**: To fully leverage the advantages of different generative models across educational scenarios, we adopted a multi-source distillation process. For each task, we selected the model with the best performance from the test set as the answer generator and used it to respond to educational questions, thereby building a training dataset for distilling models. Through this distillation process, we obtained a training set containing 4,000 samples covering all nine educational scenarios and various subtasks.
-- **Performance**: After distillation, the 7B model significantly improved on 10 out of 12 metrics, with its overall performance becoming comparable to the current state-of-the-art models. Notably, in the "Reasoning Process Rigor" metric, the model outperformed all other models including DeepSeek R1 and Qwen Max.
+In Table 2, DeepSeek R1 and Qwen2.5-7B-Instruct still show the best and worst performances, respectively, which are consistent with the model-based evaluation results.
 
 ---
 
 ### Consistency Analysis Between Model and Human Evaluation
 
 <div align="center">
-  <img src="images/Kendall.png" alt="kendall" width="800"/>
+
+| Model          | DeepSeek R1 | GPT-4o | QwQ-Plus | DeepSeek V3 | Human |
+|----------------|-------------|--------|----------|-------------|-------|
+| **DeepSeek R1** | -           | 0.55   | 0.61     | **0.65**    | 0.63  |
+| **GPT-4o**      | 0.55        | -      | 0.57     | **0.58**    | 0.56  |
+| **QwQ-Plus**    | 0.61        | 0.57   | -        | **0.62**    | 0.63  |
+| **DeepSeek V3** | 0.65        | 0.58   | 0.62     | -           | 0.63  |
+| **Human**       | 0.63        | 0.56   | 0.63     | **0.63**    | -     |
+
 </div>
 
-The above figure shows Kendall's W between different evaluation models and human assessments:
+<div align="center">
 
-- **Consistency Among Evaluation Models**: Models exhibited high consistency, with almost all Kendall's W values above 0.5 and most around 0.6, indicating strong agreement. DeepSeek V3 showed the highest consistency with other models, with its ranking of averaged model scores closely matching those of other evaluators.
-- **Consistency Between Humans and Models**: Model evaluation scores were not entirely aligned with human judgments, possibly due to limited understanding of the evaluation criteria by models. Overall, DeepSeek V3 showed the highest correlation with human evaluation, while GPT-4o showed the lowest. This pattern may be attributed to DeepSeek V3's relatively larger model size and broader training data distribution.
+  <strong>Kendall's W between different evaluation models and human evaluation. We observe the following:</strong>
+
+</div>
+
+- **Consistency among evaluation models**: The models show high consistency, with almost all Kendall's W values above 0.5 and most around 0.6, indicating strong agreement.
+- **Consistency between humans and models**: The model evaluations do not fully align with human judgments, which may be due to limited understanding of the evaluation criteria by the models.
+
+---
+
+### Model Distillation
+
+<div align="center">
+
+| Model                  | BFA  | CSI  | CRSC | DKA  | EICP | HOTS | IFTC | MGP  | PAS  | RPR  | RTC  | SEI  | Average |
+|------------------------|------|------|------|------|------|------|------|------|------|------|------|------|---------|
+| DeepSeek R1            | _9.51_ | **8.75** | **9.44** | **9.45** | **7.61** | **8.53** | **9.47** | _7.76_ | **9.64** | _8.85_ | **9.14** | **9.06** | **8.93** |
+| DeepSeek V3            | **9.57** | _8.61_ | 9.25 | _9.27_ | 7.23 | 7.98 | 9.21 | 7.56 | 8.94 | 8.76 | 9.00 | 8.59 | 8.66 |
+| Qwen Max               | 9.38 | 8.53 | 9.12 | 9.23 | _7.43_ | 7.99 | 9.16 | **7.85** | 9.05 | 8.57 | 9.00 | 8.61 | 8.66 |
+| Qwen2.5-14B-Instruct   | 9.28 | 8.50 | 9.03 | 9.14 | 7.14 | 7.81 | 8.94 | 7.55 | 8.71 | 8.35 | 8.82 | 8.25 | 8.46 |
+| Qwen2.5-7B-Instruct    | 9.27 | 8.55 | 9.08 | 9.12 | 6.77 | 7.86 | 8.96 | 7.05 | 8.95 | 8.42 | 8.82 | 8.53 | 8.44 |
+| Distillation Qwen2.5-7B| 9.26 | 8.56 | _9.27_ | 8.95 | 6.89 | _8.43_ | _9.41_ | 7.32 | _9.56_ | **9.26** | _9.09_ | _8.95_ | _8.75_ |
+
+</div>
+
+<div align="center">
+  
+  <strong>Performance of the distillation model and other models across different metrics:</strong>
+
+</div>
+
+- **Dataset Construction**: To fully leverage the strengths of different generative models across various educational scenarios, we adopt a multi-source distillation pipeline. For each task, we select the model with the best performance on the test set as the answer generator and use it to answer questions in the educational domain, thereby constructing the training dataset for the distillation model. Through this distillation process, we obtained a training set containing 4,000 samples, covering all subtasks across the 9 educational scenarios.
+
+- **Performance Improvement**: After distillation, the 7B model shows significant improvements on 10 out of the 12 metrics. Its overall performance is now comparable to that of the current state-of-the-art models.
