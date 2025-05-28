@@ -103,6 +103,14 @@ Assesses whether the model's responses reflect effective teaching principles and
 As an example, we use the **Error Correction (EC)** scenario to generate data by running the following code:
 ```bash
 python ./code/generation/EC.py
+```
+
+## Dataset Evaluation
+
+To evaluate the dataset, simply run the following code (make sure to adjust the API configuration as needed):
+```bash
+python ./code/evaluation/evaluation.py
+```
 
 ## Experiments and Analysis
 
