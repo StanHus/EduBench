@@ -12,8 +12,8 @@
 - [Framework](#framework)
 - [Dataset Construction](#dataset-construction)
   - [Evaluation Metrics Design](#evaluation-metrics-design)
-  - [Dataset Generation](#dataset-generation)
-  - [Data Evaluation](#data-evaluation)
+  - [Dataset Generation](#Dataset-Generation)
+  - [Dataset Evaluation](#Dataset-Evaluation)
 - [Experiments and Analysis](#experiments-and-analysis)
   - [Evaluation Results](#evaluation-results)
   - [Model-Human Evaluation Consistency Analysis](#model-human-evaluation-consistency-analysis)
@@ -65,7 +65,7 @@ We first classify educational scenarios into the following two categories based 
 
 ---
 
-## Evaluation Metric Design
+## Evaluation Metrics Design
 
 Based on the defined educational scenarios, we have designed a comprehensive evaluation metric system. Each scenario includes 4 sub-indicators, resulting in a total of 12 core evaluation indicators.
 
@@ -95,8 +95,6 @@ Assesses whether the model's responses reflect effective teaching principles and
 - **Motivation, Guidance & Positive Feedback**  
 - **Personalization, Adaptation & Learning Support**  
 - **Higher-Order Thinking & Skill Development**
-
----
 
 ## Dataset Generation
 
@@ -147,6 +145,7 @@ python ./code/evaluation/evaluation.py
 |                 | Qwen2.5-7B-Instruct    | 6.78 | 7.63 | 7.93 | 7.74 | 6.79 | 7.86 | 7.79 | 7.55 | 7.42 | 7.50 |
 
 </div>
+
 <div align="center">
   <strong>Table 1: Scenario-level average scores evaluated by different evaluation models.</strong>
 </div>
