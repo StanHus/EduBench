@@ -1,23 +1,10 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 import json
-import time
+import os
+import requests
+from datetime import datetime
 from tqdm import tqdm
-
-# Simulated model functions
-def get_normal_answer(prompt, model_name):
-    """Simulate calling a model and returning a result"""
-    print(f"Calling model: {model_name}")
-    time.sleep(1)  # Simulate delay
-    return f"Answer from {model_name}"
-
-
-def get_reasoning_answer(prompt, model_name):
-    """Simulate calling a reasoning model"""
-    reasoning = f"Reasoning steps for {model_name}"
-    answer = f"Final answer from {model_name}"
-    return reasoning, answer
-
 
 # Global lock to ensure safe file writing
 write_lock = threading.Lock()
@@ -36,7 +23,7 @@ TASK_PROMPT_TEMPLATES = {
 }
 
 
-def process_single_model(args):
+def process_single_model(args, get_normal_answer, get_reasoning_answer):
     """Thread function to call a single model"""
     model_type, model_name, prompt = args
     try:
@@ -51,7 +38,7 @@ def process_single_model(args):
         return None
 
 
-def process_single_task(task_id, task_type, input_data, normal_models, reasoning_models, output_file):
+def process_single_task(task_id, task_type, input_data, normal_models, reasoning_models, output_file, get_normal_answer, get_reasoning_answer):
     """
     Process a single task based on its type and input data.
     """
@@ -92,7 +79,7 @@ def process_single_task(task_id, task_type, input_data, normal_models, reasoning
     #     tasks.append(('reasoning', model, prompt_content))
 
     with ThreadPoolExecutor(max_workers=5) as model_executor:
-        futures = [model_executor.submit(process_single_model, task) for task in tasks]
+        futures = [model_executor.submit(process_single_model, task, get_normal_answer, get_reasoning_answer) for task in tasks]
         for future in as_completed(futures):
             result = future.result()
             if result:
